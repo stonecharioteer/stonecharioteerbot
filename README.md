@@ -55,8 +55,7 @@ This is a personal telegram bot to help me with several of the services I've bui
         - [ ] Get manga chapter (roshi wrapper)
         - [ ] Automatically notify when a chapter of a manga is out. Can subscribe to a manga.
     - [ ] `/random` Get random numbers.
-    - [ ] 
-- [ ] `calendar` Schedulable responses 
+- [ ] `/calendar` Schedulable responses 
     - [ ] Reminders based on events. 
         - [ ] Example: "Give me a fortune at 5:00 every day."
         - [ ] Example: "Wake me up at 2."
@@ -76,4 +75,6 @@ This is a personal telegram bot to help me with several of the services I've bui
 
 * `Shelfie`
 * `TempMon`
+* `W1f0`
 * `Vial`
+  
