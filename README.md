@@ -6,22 +6,23 @@ This is a personal telegram bot to help me with several of the services I've bui
 
 - [ ] `/librarian` Library services
     - [ ] Book Search
-        - [ ] Use Apache Solr backend
         - [ ] Allow natural language-based search that is converted to Lucene query syntax.
             - [ ] Example 1: "Where is my copy of the Lord of the Rings?"
             - [ ] Example 2: "Where's The Hobbit?"
-            - [ ] Example 3: "Show me all books I haven't read 
+            - [ ] Example 3: "Show me all books I haven't read."
+            - [ ] Example 4: "Give me a book to read."
         - [ ] Allow complex filtering based on criteria.
             - [ ] Example 1: "Where's the book that used to be at A11?"
             - [ ] Example 2: "Find the books I bought last May."
             - [ ] Example 3: "Find the books I bought when I bought my copy of Terry Pratchett's 5th Elephant?"
+        - [ ] Allow ISBN based search.
     - [ ] Book Inventory Management
-        - [ ] Use Apache Solr backend
         - [ ] Allow natural language based placement of books.
             - [ ] Example 1: "I'm placing my copy of the Lord of the Rings at A12:15" 
             - [ ] Example 2: "Neil Gaiman - Smoke and Mirrors B13-14"
             - [ ] Example 3: "Moving Calvin & Hobbes: There's Treasure Everywhere to B62:78"
         - [ ] Allow movement of books through barcode photo message followed by a position.
+        - [ ] ISBN based entry.
         - [ ] Identify where a book will fit.
             - [ ] Example: "Tell me where I should put Winter's Heart."
 - [ ] `/coffee`: Coffee machine timer
@@ -77,4 +78,7 @@ This is a personal telegram bot to help me with several of the services I've bui
 * `TempMon`
 * `W1f0`
 * `Vial`
-  
+
+## Contributors
+
+* `bukkaraya`
