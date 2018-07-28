@@ -1,10 +1,8 @@
-StoneCharioteerBot
---------------------
+# StoneCharioteerBot
 
-This repository contains the code for my personal telegram bot. It may not be very useful to others in general but it is an example of how one could use telegram to make oneself a personal assistant.
+This is a personal telegram bot. It may not be very useful to others in general but it is an example of how one could use telegram to make oneself a personal text assistant.
 
-Planned Categories for Response:
-=================================
+## Planned Categories for Response:
 
 - [ ] Book search
     - [ ] Need to identify if I've asked for a book.
