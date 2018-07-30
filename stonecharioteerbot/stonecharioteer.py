@@ -9,7 +9,11 @@ import telegram
 from telegram.ext import Updater
 from telegram.ext import CommandHandler, MessageHandler, Filters
 import bs4
+import matplotlib
+matplotlib.use("Agg")
 
+from matplotlib import pyplot as plt
+plt.style.use("ggplot")
 from .plugins import tempmon
 
 def start(bot, update):
@@ -32,22 +36,36 @@ def categorize(bot, update):
         return True
     elif "stats" in query or "statistics" in query:
         df_one_day = tempmon.filter_last_one_day()
-        df_md = repr(df_one_day.describe())
-        send(bot, update, df_md,
-                parse_mode=telegram.ParseMode.MARKDOWN)
+        df_one_day.set_index(keys="timestamp",inplace=True)
+        fig, axes = plt.subplots(nrows=4, ncols=1, figsize=(9, 20))
+        df_one_day["temperature_h"].plot(ax=axes[0])
+        axes[0].set_title("Temperature (Humidity Based) [°C]")
+        df_one_day["temperature_p"].plot(ax=axes[1])
+        axes[1].set_title("Temperature (Pressure Based) [°C]")
+        df_one_day["humidity"].plot(ax=axes[2])
+        axes[2].set_title("Humidity [%]")
+        df_one_day["pressure"].plot(ax=axes[3])
+        axes[3].set_title("Pressure [bar]")
+        plt.tight_layout()
+        fig.savefig("stats.png",dpi=220)
+        bot.send_photo(
+                        chat_id=update.message.chat_id, 
+                        photo=open("stats.png","rb"))
+        return True
+        
     elif "temperature" in query:
         df_one_day = tempmon.filter_last_one_day()
-        message = "Average Temperature in the past 24h was \n{:.4f}°C (Using Pressure as a reference)\n{:.4f} °C (using humidity as a reference)".format(df_one_day["temperature_p"].mean(), df_one_day["temperature_h"].mean())
+        message = "Mean Temperature in the past 24h was \n{:.4f}°C (Pressure based)\n{:.4f} °C (Humidity based)".format(df_one_day["temperature_p"].mean(), df_one_day["temperature_h"].mean())
         send(bot, update, message)
         return True
     elif "humidity" in query:
         df_one_day = tempmon.filter_last_one_day()
-        message = "Average humidity in the past 24h was {:.4f}%".format(df_one_day["humidity"].mean())
+        message = "Mean humidity in the past 24h was {:.4f}%".format(df_one_day["humidity"].mean())
         send(bot, update, message)
         return True
     elif "pressure" in query:
         df_one_day = tempmon.filter_last_one_day()
-        message = "Average pressure in the past 24h was {:.4f} bar".format(df_one_day["pressure"].mean())
+        message = "Mean pressure in the past 24h was {:.4f} bar".format(df_one_day["pressure"].mean())
         send(bot, update, message)
         return True
     return None
