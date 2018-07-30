@@ -26,7 +26,9 @@ MarkupSafe==1.0
 mccabe==0.6.1
 more-itertools==4.2.0
 nltk==3.3
+numpy==1.15.0
 packaging==17.1
+pandas==0.23.3
 pluggy==0.6.0
 py==1.5.4
 Pygments==2.2.0
