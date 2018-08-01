@@ -9,6 +9,7 @@ import telegram
 from telegram.ext import Updater
 from telegram.ext import CommandHandler, MessageHandler, Filters
 import bs4
+import xkcd
 import matplotlib
 matplotlib.use("Agg")
 
@@ -68,6 +69,13 @@ def categorize(bot, update):
         message = "Mean pressure in the past 24h was {:.4f} millibar".format(df_one_day["pressure"].mean())
         send(bot, update, message)
         return True
+    elif "xkcd" in query:
+        comic = xkcd.getRandomComic()
+        response = "[{}]({})\n{}".format(comic.title, comic.imageLink, comic.altText)
+        bot.send_message(
+            chat_id=update.message.chat_id, 
+            text="response",
+            parse_mode=telegram.ParseMode.MARKDOWN)
     return None
 
 def cowsay(bot, update, text):
