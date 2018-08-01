@@ -74,8 +74,9 @@ def categorize(bot, update):
         response = "[{}]({})\n{}".format(comic.title, comic.imageLink, comic.altText)
         bot.send_message(
             chat_id=update.message.chat_id, 
-            text="response",
+            text=response,
             parse_mode=telegram.ParseMode.MARKDOWN)
+        return True
     return None
 
 def cowsay(bot, update, text):
