@@ -45,7 +45,7 @@ def categorize(bot, update):
         df_one_day["humidity"].plot(ax=axes[2])
         axes[2].set_title("Humidity [%]")
         df_one_day["pressure"].plot(ax=axes[3])
-        axes[3].set_title("Pressure [bar]")
+        axes[3].set_title("Pressure [millibar]")
         plt.tight_layout()
         fig.savefig("stats.png",dpi=220)
         bot.send_photo(
@@ -65,7 +65,7 @@ def categorize(bot, update):
         return True
     elif "pressure" in query:
         df_one_day = tempmon.filter_last_one_day()
-        message = "Mean pressure in the past 24h was {:.4f} bar".format(df_one_day["pressure"].mean())
+        message = "Mean pressure in the past 24h was {:.4f} millibar".format(df_one_day["pressure"].mean())
         send(bot, update, message)
         return True
     return None
