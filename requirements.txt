@@ -13,6 +13,7 @@ bs4==0.0.1
 celery==4.2.1
 certifi==2018.4.16
 chardet==3.0.4
+Click==7.0
 cycler==0.10.0
 docutils==0.14
 future==0.16.0
@@ -50,6 +51,7 @@ Sphinx==1.7.6
 sphinx-rtd-theme==0.4.1
 sphinxcontrib-websupport==1.1.0
 SQLAlchemy==1.2.10
+sqlsoup==0.9.1
 typed-ast==1.1.0
 tzlocal==1.5.1
 urllib3==1.23
