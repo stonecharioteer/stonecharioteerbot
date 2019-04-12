@@ -122,7 +122,7 @@ def categorize(bot, update):
 
 def cowsay(bot, update, text):
     import subprocess
-    out = subprocess.check_output(["/usr/games/cowsay", text.replace("cowsay ", "").replace("Cowsay ", ""])
+    out = subprocess.check_output(["/usr/games/cowsay", text.replace("cowsay ", "").replace("Cowsay ", ""]))
     logging.debug(out.decode("ascii"))
     return send(bot, update, out.decode("ascii"))
 
