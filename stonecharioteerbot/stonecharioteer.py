@@ -28,7 +28,14 @@ def categorize(bot, update):
     TODO: Use `nltk` or `sklearn` here.
     """
     query = update.message.text.lower()
-    if "cowsay" in query:
+    if "are you" in query:
+        message = ("I am many things, compadre. I am a man, I am military trained in the art of war "
+                "by Sun Tzu. I am trained in philosophy by Marcus Aurelius. I am trained in the culinary arts "
+                "by Gordon Ramsay. I am the night. I am... a Butler."
+                )
+        send(bot, update, message)
+        return True
+    elif "cowsay" in query:
         if "fortune" in query:
             cowsay_fortune(bot, update)
         else:
@@ -88,7 +95,7 @@ def categorize(bot, update):
         send(bot, update, message)
         range_p_1d = max_pressure - min_pressure
         range_p_1w = max_pressure - min_pressure
-        if math.isclose(range_p_1d, range_p_1w, abs_tol=1e-2):
+        if math.isclose(range_p_1d, range_p_1w, abs_tol=1e-2) or (range_p_1d > range_p_1w):
             message = "The pressure has varied a little too wildly today compared to this week in general. The range is {:.3f} millibar. You might get a headache.".format(range_p_1d)
         else:
             message = "The pressure variation today has been a little less compared to earlier in the week. You might not get a headache."
