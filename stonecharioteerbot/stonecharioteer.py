@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
 import os
+import math
 import logging
 import datetime
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -83,17 +84,17 @@ def categorize(bot, update):
         df2 = df2.loc[df2.timestamp <= end_time]
         min_p = df2["pressure"].min()
         max_p = df2["pressure"].max()
-        message = "The pressure varied from {:.3f} millibar to {:3f} millibar in the last week, not including the last 24 hours.".format(min_p, max_p)
+        message = "The pressure varied from {:.3f} millibar to {:.3f} millibar in the last week, not including the last 24 hours.".format(min_p, max_p)
         send(bot, update, message)
         range_p_1d = max_pressure - min_pressure
         range_p_1w = max_pressure - min_pressure
-        if range_p_1d > range_p_1w:
-            message = "The pressure has varied a little too wildly today. The range is {:3f} millibar. You might get a headache.".format(range_p_1d)
+        if math.isclose(range_p_1d, range_p_1w, abs_tol=1e-2):
+            message = "The pressure has varied a little too wildly today compared to this week in general. The range is {:.3f} millibar. You might get a headache.".format(range_p_1d)
         else:
             message = "The pressure variation today has been a little less compared to earlier in the week. You might not get a headache."
         send(bot, update, message) 
         message = "Uh, you know I don't have my MD yet, right boss?"
-        send(bot, update. message)
+        send(bot, update, message)
 
     elif "temperature" in query:
         df_one_day = tempmon.filter_last_one_day()
@@ -122,7 +123,7 @@ def categorize(bot, update):
 
 def cowsay(bot, update, text):
     import subprocess
-    out = subprocess.check_output(["/usr/games/cowsay", text.replace("cowsay ", "").replace("Cowsay ", ""]))
+    out = subprocess.check_output(["/usr/games/cowsay", text.replace("cowsay ", "").replace("Cowsay ", "")])
     logging.debug(out.decode("ascii"))
     return send(bot, update, out.decode("ascii"))
 
