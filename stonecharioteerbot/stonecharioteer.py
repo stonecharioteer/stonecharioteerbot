@@ -134,8 +134,8 @@ def fortune(bot, update):
 
 def cowsay_fortune(bot, update):
     import subprocess
-    out = subprocess.check_output(["fortune"])
-    out = subprocess.check_output(["cowsay", out.decode("ascii")])
+    out = subprocess.check_output(["/usr/games/fortune"])
+    out = subprocess.check_output(["/usr/games/cowsay", out.decode("ascii")])
     return send(bot, update, out.decode("ascii"))
 
 def send(bot, update, message, parse_mode=None):
