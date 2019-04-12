@@ -15,7 +15,7 @@ def filter_last_one_day():
     df = df.loc[df["timestamp"]>=last_day]
     df = df.loc[df["pressure"]>=800]
     df = df[["timestamp","temperature_h","temperature_p","humidity","pressure"]]
-    return df_one_day
+    return df
 
 def filter_last_one_week():
     df = get_df()
