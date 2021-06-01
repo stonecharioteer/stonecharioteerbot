@@ -54,7 +54,7 @@ SQLAlchemy==1.2.10
 sqlsoup==0.9.1
 typed-ast==1.1.0
 tzlocal==1.5.1
-urllib3==1.23
+urllib3==1.26.5
 vine==1.1.4
 wrapt==1.10.11
 xkcd==2.4.2
