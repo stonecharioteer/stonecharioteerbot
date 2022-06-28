@@ -1,7 +1,7 @@
 alabaster==0.7.11
 amqp==2.3.2
 APScheduler==3.5.1
-arrow==0.12.1
+arrow==0.15.1
 astroid==2.0.1
 asyncio==3.4.3
 atomicwrites==1.1.5
